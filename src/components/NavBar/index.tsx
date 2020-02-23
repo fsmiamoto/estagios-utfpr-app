@@ -8,7 +8,7 @@ function NavBar() {
       <Title href="/">Estágios e Empregos</Title>
       <UList>
         <LItem>
-          <Link href="/curso">Vagas por curso</Link>
+          <Link href="#/curso">Vagas por curso</Link>
         </LItem>
       </UList>
     </Nav>

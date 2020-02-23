@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Switch, Route, HashRouter as Router } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 
@@ -13,7 +13,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter>
+      <Router>
         <Switch>
           <Route exact={true} path="/" component={Home} />
           <Route exact={true} path="/curso" component={JobsByMajor} />
@@ -22,7 +22,7 @@ function App() {
             component={() => <div>Hey, this page does not exist!</div>}
           />
         </Switch>
-      </BrowserRouter>
+      </Router>
     </ApolloProvider>
   );
 }
