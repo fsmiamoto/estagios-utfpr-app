@@ -20,12 +20,19 @@ export const Company = styled.h1`
   font-size: 1.3rem;
   font-weight: bold;
   color: #46505a;
+  margin-bottom: 5px;
+`;
+
+export const JobType = styled.h2`
+  font-size: 1.1rem;
+  font-weight: bold;
   margin-bottom: 15px;
 `;
 
 export const Description = styled.p`
   color: #777;
   text-align: justify;
+  font-size: 16px;
 `;
 
 export const Header = styled.h2`
@@ -39,9 +46,13 @@ export const ContactRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 `;
 
 export const ContactCol = styled.div`
   margin-right: 15px;
+`;
+
+export const I = styled.i`
+  margin-right: 5px;
 `;

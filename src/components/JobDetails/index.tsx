@@ -1,14 +1,18 @@
 import React from "react";
-import { Job } from "../../interfaces/job";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "./react-tabs.css";
 
 import {
   Base,
   Company,
   Description,
-  Header,
   ContactRow,
-  ContactCol
+  ContactCol,
+  JobType,
+  I
 } from "./styles";
+import { Job } from "../../interfaces/job";
 
 interface JobDetailsProps {
   job?: Job;
@@ -25,80 +29,93 @@ function JobDetails(props: JobDetailsProps) {
   if (loading) {
     return (
       <Base>
-        <h4>Carregando dados!</h4>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <PropagateLoader loading={loading} size={5} color={"#ccc"} />
+        </div>
       </Base>
     );
+  }
+
+  let jobTypeColor: string;
+  if (job.jobType === "Estágio") {
+    jobTypeColor = "#5e8d9f";
+  } else {
+    jobTypeColor = "#9f5e8d";
   }
 
   return (
     <Base>
       <Company>{job.company}</Company>
+      <JobType style={{ color: jobTypeColor }}>{job.jobType}</JobType>
       <ContactRow>
         <ContactCol>
-          <i
-            className="fas fa-dollar-sign"
-            style={{ marginRight: 3, color: "#00d3bb" }}
-          />{" "}
+          <I className="fas fa-dollar-sign" style={{ color: "#00d3bb" }} />{" "}
           {job.salary}
         </ContactCol>
         <ContactCol>
-          <i
-            className="far fa-calendar"
-            style={{ marginRight: 3, color: "#FA8072" }}
-          />{" "}
+          <I className="far fa-calendar" style={{ color: "#FA8072" }} />{" "}
           {job.date}
         </ContactCol>
       </ContactRow>
       <ContactRow>
         <ContactCol>
-          <i
-            className="far fa-clock"
-            style={{ marginRight: 3, color: "#41c4ff" }}
-          />{" "}
+          <I className="far fa-clock" style={{ color: "#41c4ff" }} />{" "}
           {job.workHours}
         </ContactCol>
         <ContactCol>
-          <i className="far fa-id-badge" style={{ marginRight: 3 }} />{" "}
-          {job.positions} vaga(s)
+          <I className="far fa-id-badge" /> {job.positions} vaga(s)
         </ContactCol>
       </ContactRow>
-      <Header>Descrição da vaga: </Header>
-      <Description>{job.description}</Description>
-      <Header>Requisitos: </Header>
-      <Description>{job.requisites}</Description>
-      <Header>Benefícios: </Header>
-      <Description>{job.benefits}</Description>
-      <Header>Contato: </Header>
-      <ContactRow>
-        {job.contact && (
-          <ContactCol>
-            <i className="far fa-address-card" style={{ marginRight: 3 }} />{" "}
-            {job.contact}
-          </ContactCol>
-        )}
-        {job.phone && (
-          <ContactCol>
-            <i className="fas fa-phone-alt" style={{ marginRight: 3 }} />{" "}
-            {job.phone}
-          </ContactCol>
-        )}
-      </ContactRow>
-      <ContactRow>
-        {job.email && (
-          <ContactCol>
-            <i className="far fa-envelope" style={{ marginRight: 3 }} />{" "}
-            {job.email}
-          </ContactCol>
-        )}
-      </ContactRow>
-      <Header>Cursos: </Header>
-      <ul>
-        {job.majors.map((m, i) => (
-          <li key={i} style={{ listStyle: "none" }}>
-            <i className="fas fa-angle-right" style={{ marginRight: 3 }} /> {m}
-          </li>
-        ))}
-      </ul>
+      <Tabs style={{ marginTop: 20 }}>
+        <TabList>
+          <Tab>Descrição</Tab>
+          <Tab>Requisitos</Tab>
+          <Tab>Benefícios</Tab>
+          <Tab>Contato</Tab>
+          <Tab>Cursos</Tab>
+        </TabList>
+        <TabPanel>
+          <Description>{job.description}</Description>
+        </TabPanel>
+        <TabPanel>
+          <Description>{job.requisites}</Description>
+        </TabPanel>
+        <TabPanel>
+          <Description>{job.benefits}</Description>
+        </TabPanel>
+        <TabPanel>
+          <ContactRow>
+            {job.contact && (
+              <span>
+                <I className="far fa-address-card" /> {job.contact}
+              </span>
+            )}
+          </ContactRow>
+          <ContactRow>
+            {job.phone && (
+              <span>
+                <I className="fas fa-phone-alt" /> {job.phone}
+              </span>
+            )}
+          </ContactRow>
+          <ContactRow>
+            {job.email && (
+              <span>
+                <I className="far fa-envelope" /> {job.email}
+              </span>
+            )}
+          </ContactRow>
+        </TabPanel>
+        <TabPanel>
+          <ul>
+            {job.majors.map((m, i) => (
+              <li key={i} style={{ listStyle: "none" }}>
+                <I className="fas fa-angle-right" /> {m}
+              </li>
+            ))}
+          </ul>
+        </TabPanel>
+      </Tabs>
     </Base>
   );
 }
