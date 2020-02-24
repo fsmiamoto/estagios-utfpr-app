@@ -13,6 +13,11 @@ export const Li = styled.li`
 
   &:hover {
     color: #777;
+    transition: ease-in-out color 0.15s;
+    & > i {
+      color: #ddd;
+      transition: ease-in-out color 0.15s;
+    }
   }
 `;
 
@@ -23,5 +28,7 @@ export const Ul = styled.ul`
 
 export const I = styled.i`
   margin: 10px;
-  padding-top: 2px;
+  padding: 3px 8px;
+  background-color: #007d9c;
+  color: white;
 `;

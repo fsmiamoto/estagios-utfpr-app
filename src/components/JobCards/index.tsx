@@ -3,6 +3,7 @@ import React from "react";
 import JobCard from "../JobCard";
 import { Container } from "./styles";
 import { Job } from "../../interfaces/job";
+import SyncLoader from "react-spinners/SyncLoader";
 
 interface JobCardsProps {
   jobs?: Job[];
@@ -15,7 +16,7 @@ function JobCards(props: JobCardsProps) {
   const { jobs, loading, onJobClick, selectedJobCode } = props;
 
   if (loading) {
-    return <p>Carregando ofertas...</p>;
+    return <SyncLoader size={5} loading={loading} color={"#ccc"} />;
   }
 
   return (
