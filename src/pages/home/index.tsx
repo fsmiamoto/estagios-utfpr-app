@@ -19,7 +19,10 @@ function Home() {
   const [pageInfo, setPaginationInfo] = useState<PageInfo>();
 
   const { loading, error, data } = useQuery(GET_JOBS, { variables: { page } });
-  const jobDetails = useQuery(GET_JOB, { variables: { code: jobCode } });
+  const jobDetails = useQuery(GET_JOB, {
+    variables: { code: jobCode },
+    skip: !jobCode
+  });
 
   useEffect(() => {
     if (data && !error) {
@@ -31,10 +34,12 @@ function Home() {
     }
   }, [data, error]);
 
+  const Loading = loading || !jobDetails.data;
+
   return (
     <div style={{ marginBottom: 50 }}>
       <NavBar />
-      {!loading && !error && (
+      {!Loading && !error && (
         <h3
           style={{
             marginRight: 20,
@@ -48,25 +53,23 @@ function Home() {
           Página {page + 1} de {pageInfo?.total} vagas{" "}
         </h3>
       )}
-      <Container>
-        {error ? (
-          <p>Oops algo deu errado :(</p>
-        ) : (
-          <>
-            <JobCards
-              jobs={jobs}
-              loading={loading && jobDetails.loading}
-              onJobClick={setJobCode}
-              selectedJobCode={jobCode}
-            />
-            <JobDetails
-              job={jobDetails?.data?.job}
-              loading={loading && jobDetails.loading}
-            />
-          </>
-        )}
-      </Container>
-      {pageInfo && (
+      {error ? (
+        <p>Oops algo deu errado :(</p>
+      ) : (
+        <Container>
+          <JobCards
+            jobs={jobs}
+            loading={Loading}
+            onJobClick={setJobCode}
+            selectedJobCode={jobCode}
+          />
+          <JobDetails
+            job={!loading && jobDetails?.data?.job}
+            loading={!Loading && jobDetails.loading}
+          />
+        </Container>
+      )}
+      {!Loading && !error && pageInfo && (
         <Pagination
           hasPreviousPage={pageInfo.hasPreviousPage}
           hasNextPage={pageInfo.hasNextPage}

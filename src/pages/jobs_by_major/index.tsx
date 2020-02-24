@@ -23,7 +23,10 @@ function JobsByMajor() {
   const { loading, error, data } = useQuery(GET_JOBS_BY_MAJOR, {
     variables: { page, major }
   });
-  const jobDetails = useQuery(GET_JOB, { variables: { code: jobCode } });
+  const jobDetails = useQuery(GET_JOB, {
+    variables: { code: jobCode },
+    skip: !jobCode
+  });
 
   useEffect(() => {
     if (data && !error) {
@@ -34,6 +37,8 @@ function JobsByMajor() {
       }
     }
   }, [data, error]);
+
+  const Loading = loading || !jobDetails.data;
 
   return (
     <div style={{ marginBottom: 50 }}>
@@ -47,7 +52,7 @@ function JobsByMajor() {
         }}
       >
         <MajorSelect onSelect={setMajor} />
-        {!loading && !error && (
+        {!Loading && !error && (
           <h3
             style={{
               marginRight: 20,
@@ -72,18 +77,18 @@ function JobsByMajor() {
           <>
             <JobCards
               jobs={jobs}
-              loading={loading && jobDetails.loading}
+              loading={Loading}
               onJobClick={setJobCode}
               selectedJobCode={jobCode}
             />
             <JobDetails
-              job={jobDetails?.data?.job}
-              loading={loading && jobDetails.loading}
+              job={!Loading && jobDetails?.data?.job}
+              loading={!Loading && jobDetails.loading}
             />
           </>
         )}
       </Container>
-      {pageInfo && (
+      {!Loading && !error && pageInfo && (
         <Pagination
           hasPreviousPage={pageInfo.hasPreviousPage}
           hasNextPage={pageInfo.hasNextPage}
