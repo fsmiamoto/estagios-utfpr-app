@@ -17,33 +17,36 @@ export const Nav = styled.nav`
 export const Title = styled.a`
   font-size: 1.5rem;
   font-weight: bold;
-  color: #eee;
+  color: #fff;
   padding: 2px 5px;
   display: block;
   padding: 5px;
   text-decoration: none;
 
   &:hover {
-    color: #fff;
+    color: #ddd;
+    transition: ease-in-out color 0.15s;
   }
 `;
 
 export const UList = styled.ul`
   display: flex;
-  margin-left: 20px;
+  margin-left: 30px;
   list-style: none;
+  flex: 1;
 `;
+
 export const LItem = styled.li`
   padding: 0 10px;
 `;
 
 export const Link = styled.a`
-  color: #ddd;
+  color: #fff;
   text-decoration: none;
   margin-bottom: 2px;
 
   &:hover {
-    border-bottom: 2px solid #fff;
-    color: #fff;
+    color: #ddd;
+    transition: ease-in-out color 0.15s;
   }
 `;

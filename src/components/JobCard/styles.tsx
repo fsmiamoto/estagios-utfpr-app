@@ -7,11 +7,12 @@ export const Base = styled.div`
   padding: 15px 20px;
   flex: 1 0 350px;
   margin: 10px;
-  height: 275px;
+  height: 280px;
   cursor: pointer;
 
   &:hover {
     box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.15);
+    transition: ease-in-out box-shadow 0.1s;
   }
 `;
 
