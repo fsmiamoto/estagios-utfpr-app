@@ -45,7 +45,15 @@ function JobDetails(props: JobDetailsProps) {
 
   return (
     <Base>
-      <Company>{job.company}</Company>
+      <Company>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={`https://google.com/search?q=${job.company}`}
+        >
+          {job.company}
+        </a>
+      </Company>
       <JobType style={{ color: jobTypeColor }}>{job.jobType}</JobType>
       <ContactRow>
         <ContactCol>

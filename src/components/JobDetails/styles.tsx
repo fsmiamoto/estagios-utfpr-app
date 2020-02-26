@@ -19,8 +19,16 @@ export const Base = styled.div`
 export const Company = styled.h1`
   font-size: 1.3rem;
   font-weight: bold;
-  color: #46505a;
   margin-bottom: 5px;
+
+  & > a {
+    text-decoration: none;
+    color: #46505a;
+    &:hover {
+      color: #677685;
+      transition: ease-in-out color 0.1s;
+    }
+  }
 `;
 
 export const JobType = styled.h2`
