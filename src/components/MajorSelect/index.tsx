@@ -41,6 +41,16 @@ function MajorSelect(props: MajorSelectProps) {
           const value = v as { label: string; value: string };
           onSelect(value.value);
         }}
+        theme={theme => ({
+          ...theme,
+          colors: {
+            ...theme.colors,
+            primary25: "#bddde5",
+            primary75: "#bddde5",
+            primary50: "#bddde5",
+            primary: "#007d9c"
+          }
+        })}
       />
     </div>
   );
