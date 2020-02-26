@@ -5,4 +5,5 @@ export const Container = styled.div`
   flex-flow: wrap;
   flex: 1 1 100%;
   justify-content: center;
+  height: 100%;
 `;
