@@ -1,10 +1,17 @@
 import React from "react";
 
-import { Nav, Title, UList, Link, LItem } from "./styles";
+import { Button, Hamburguer, Nav, Title, UList, Link, LItem } from "./styles";
 
-function NavBar() {
+interface NavBarProps {
+  onClick?: () => void;
+}
+function NavBar(props: NavBarProps) {
+  const { onClick } = props;
   return (
     <Nav>
+      <Button onClick={onClick}>
+        <Hamburguer className="fas fa-bars" />
+      </Button>
       <Title href="/">Estágios e Empregos</Title>
       <UList>
         <LItem>

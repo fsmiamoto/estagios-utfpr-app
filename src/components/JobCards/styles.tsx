@@ -6,4 +6,5 @@ export const Container = styled.div`
   flex: 1 1 100%;
   justify-content: center;
   height: 100%;
+  z-index: 100;
 `;
