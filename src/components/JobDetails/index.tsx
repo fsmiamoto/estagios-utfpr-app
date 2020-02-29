@@ -17,13 +17,14 @@ import { Job } from "../../interfaces/job";
 interface JobDetailsProps {
   job?: Job;
   loading: boolean;
+  visible?: boolean;
 }
 
 function JobDetails(props: JobDetailsProps) {
-  const { job, loading } = props;
+  const { job, loading, visible } = props;
 
-  if (!job) {
-    return <></>;
+  if (!job || !visible) {
+    return null;
   }
 
   if (loading) {

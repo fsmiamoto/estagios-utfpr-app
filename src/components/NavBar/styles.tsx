@@ -12,6 +12,11 @@ export const Nav = styled.nav`
   width: 100%;
   margin-bottom: 15px;
   flex-shrink: 0;
+
+  @media (max-width: 700px) {
+    justify-content: start;
+    padding: 15px 15px;
+  }
 `;
 
 export const Title = styled.a`
@@ -34,6 +39,10 @@ export const UList = styled.ul`
   margin-left: 30px;
   list-style: none;
   flex: 1;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const LItem = styled.li`
@@ -48,5 +57,21 @@ export const Link = styled.a`
   &:hover {
     color: #ddd;
     transition: ease-in-out color 0.15s;
+  }
+`;
+
+export const Hamburguer = styled.i``;
+
+export const Button = styled.button`
+  color: white;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  text-align: center;
+  display: none;
+
+  @media (max-width: 700px) {
+    display: block;
+    margin-right: 10px;
   }
 `;

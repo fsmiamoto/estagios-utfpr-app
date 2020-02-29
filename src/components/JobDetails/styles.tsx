@@ -14,6 +14,15 @@ export const Base = styled.div`
   top: 25px;
   flex: 0 0 600px;
   overflow-y: auto;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    height: 80%;
+    width: 95%;
+    top: 80px;
+    z-index: 300;
+    margin: 0 auto;
+  }
 `;
 
 export const Company = styled.h1`

@@ -31,7 +31,9 @@ function MajorSelect(props: MajorSelectProps) {
     data && data.majors.map((m: Major) => ({ label: m.name, value: m.name }));
 
   return (
-    <div style={{ marginLeft: 10, maxWidth: 350, flex: "1 1 350px" }}>
+    <div
+      style={{ marginLeft: 10, maxWidth: 350, flex: "1 1 350px", zIndex: 110 }}
+    >
       <Select
         placeholder={"Selecione um curso..."}
         options={options}
