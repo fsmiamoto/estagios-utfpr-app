@@ -6,12 +6,16 @@ import JobDetails from "../../components/JobDetails";
 import JobCards from "../../components/JobCards";
 import Pagination from "../../components/Pagination";
 import MajorSelect from "../../components/MajorSelect";
+import Sidebar from "../../components/Sidebar";
+import Backdrop from "../../components/Backdrop";
 
 import { Job } from "../../interfaces/job";
 import { PageInfo } from "../../interfaces/pageInfo";
 
-import { Container } from "./styles";
+import { Container, Flex } from "./styles";
 import { GET_JOBS_BY_MAJOR, GET_JOB } from "./queries";
+import { PageIndicator } from "../home/styles";
+import useMedia from "../../hooks/useMedia";
 
 function JobsByMajor() {
   const [jobs, setJobs] = useState<Job[]>();
@@ -19,9 +23,12 @@ function JobsByMajor() {
   const [page, setPage] = useState(0);
   const [major, setMajor] = useState();
   const [pageInfo, setPaginationInfo] = useState<PageInfo>();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   const { loading, error, data } = useQuery(GET_JOBS_BY_MAJOR, {
-    variables: { page, major }
+    variables: { page, major },
+    skip: !major
   });
   const jobDetails = useQuery(GET_JOB, {
     variables: { code: jobCode },
@@ -38,34 +45,23 @@ function JobsByMajor() {
     }
   }, [data, error]);
 
-  const Loading = loading || !jobDetails.data;
+  const Loading = major && (loading || !jobDetails.data);
+
+  const isWide = useMedia("(min-width: 769px)");
 
   return (
     <div style={{ marginBottom: 50 }}>
-      <NavBar />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "10px"
-        }}
-      >
+      <NavBar onClick={() => setDrawerOpen(true)} />
+      <Sidebar visible={drawerOpen} />
+      <Backdrop visible={drawerOpen} onClick={() => setDrawerOpen(false)} />
+      <Flex>
         <MajorSelect onSelect={setMajor} />
-        {!Loading && !error && (
-          <h3
-            style={{
-              marginRight: 20,
-              color: "#777",
-              fontWeight: "normal",
-              fontSize: "0.95rem",
-              textAlign: "end"
-            }}
-          >
+        {major && !Loading && !error && (
+          <PageIndicator>
             Página {page + 1} de {pageInfo?.total} vagas{" "}
-          </h3>
+          </PageIndicator>
         )}
-      </div>
+      </Flex>
       <Container>
         {error ? (
           major ? (
@@ -78,12 +74,20 @@ function JobsByMajor() {
             <JobCards
               jobs={jobs}
               loading={Loading}
-              onJobClick={setJobCode}
+              onJobClick={(code: string) => {
+                setShowDetails(true);
+                setJobCode(code);
+              }}
               selectedJobCode={jobCode}
             />
             <JobDetails
-              job={!Loading && jobDetails?.data?.job}
+              job={!loading && jobDetails?.data?.job}
               loading={!Loading && jobDetails.loading}
+              visible={showDetails || isWide}
+            />
+            <Backdrop
+              visible={showDetails && !isWide}
+              onClick={() => setShowDetails(false)}
             />
           </>
         )}
