@@ -11,6 +11,10 @@ interface PaginationProps {
 function Pagination(props: PaginationProps) {
   const { hasNextPage, hasPreviousPage, onPageChange, currentPage } = props;
 
+  if (!hasPreviousPage && !hasNextPage) {
+    return null;
+  }
+
   return (
     <nav>
       <Ul className="pagination">
