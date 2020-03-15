@@ -15,11 +15,11 @@ export const Base = styled.div`
   flex: 0 0 600px;
   overflow-y: auto;
 
-  @media (max-width: 768px) {
+  @media (max-width: 800px) {
     position: fixed;
     height: 80%;
     width: 95%;
-    top: 80px;
+    top: 10vh;
     z-index: 300;
     margin: 0 auto;
   }
