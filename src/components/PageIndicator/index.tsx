@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  display: flex;
-  justify-content: space-around;
-  z-index: 100;
-`;
-
-export const PageIndicator = styled.h3`
+export default styled.h3`
   margin-right: 20px;
   color: #777;
   font-weight: normal;
@@ -14,4 +8,3 @@ export const PageIndicator = styled.h3`
   text-align: end;
   margin-bottom: 10px;
 `;
-

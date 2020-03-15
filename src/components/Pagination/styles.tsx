@@ -24,6 +24,7 @@ export const Li = styled.li`
 export const Ul = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  margin-left: 5px;
 `;
 
 export const I = styled.i`
