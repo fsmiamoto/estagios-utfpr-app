@@ -2,7 +2,7 @@
 
 An app for visualizing job positions taken from the UTFPR website
 
-Avaliable at: https://estagios-utfpr.netlify.com
+Avaliable at: https://estagios.fsmiamoto.xyz/
 
 ## Motivation
 
