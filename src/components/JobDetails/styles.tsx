@@ -28,7 +28,7 @@ export const Base = styled.div`
 export const Company = styled.h1`
   font-size: 1.3rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 
   & > a {
     text-decoration: none;
@@ -40,10 +40,13 @@ export const Company = styled.h1`
   }
 `;
 
-export const JobType = styled.h2`
-  font-size: 1.1rem;
-  font-weight: bold;
+export const JobType = styled.h2<{type: string}>`
+  font-size: 1rem;
   margin-bottom: 15px;
+  color: #fff;
+  border-radius: 7px;
+  padding: 3px 5px;
+  background-color: ${props => props.type === "Estágio" ? "var(--color-internship)" : "var(--color-full-time)"}
 `;
 
 export const Description = styled.p`
@@ -60,9 +63,9 @@ export const Header = styled.h2`
 `;
 
 export const ContactRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: flex-start;
   margin-bottom: 5px;
 `;
 
@@ -72,4 +75,12 @@ export const ContactCol = styled.div`
 
 export const I = styled.i`
   margin-right: 5px;
+    color: var(--color-primary-500);
+`;
+
+export const FlexDiv = styled.div`
+  display: flex;
+    flex-flow: row wrap;
+  justify-content: space-between;
+  flex: 2;
 `;
