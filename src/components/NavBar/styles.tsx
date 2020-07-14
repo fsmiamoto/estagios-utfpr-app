@@ -2,16 +2,17 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
   display: flex;
-  background-color: #007d9c;
+  background-color: var(--color-primary-500);
   align-items: center;
   justify-content: space-between;
-  height: 50px;
+  height: 45px;
   padding: 15px 30px;
   font-size: 1.2rem;
   padding-bottom: 20px;
   width: 100%;
   margin-bottom: 15px;
   flex-shrink: 0;
+  box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.35);
 
   @media (max-width: 700px) {
     justify-content: start;
@@ -20,17 +21,17 @@ export const Nav = styled.nav`
 `;
 
 export const Title = styled.a`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  color: #fff;
+    color: var(--color-gray-200);
   padding: 2px 5px;
   display: block;
   padding: 5px;
   text-decoration: none;
 
   &:hover {
-    color: #ddd;
-    transition: ease-in-out color 0.15s;
+    color: var(--color-gray-500);
+    transition: ease-in-out color 0.3s;
   }
 `;
 
@@ -50,12 +51,13 @@ export const LItem = styled.li`
 `;
 
 export const Link = styled.a`
-  color: #fff;
+  color: var(--color-gray-100);
   text-decoration: none;
   margin-bottom: 2px;
-
+    font-size: 1.1rem;
+ 
   &:hover {
-    color: #ddd;
+    color: var(--color-gray-500);
     transition: ease-in-out color 0.15s;
   }
 `;

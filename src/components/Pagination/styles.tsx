@@ -12,10 +12,10 @@ export const Li = styled.li`
   align-items: center;
 
   &:hover {
-    color: #777;
+    color: var(--color-gray-500);
     transition: ease-in-out color 0.15s;
     & > i {
-      color: #ddd;
+      color: var(--color-gray-400);
       transition: ease-in-out color 0.15s;
     }
   }
@@ -30,6 +30,6 @@ export const Ul = styled.ul`
 export const I = styled.i`
   margin: 10px;
   padding: 3px 8px;
-  background-color: #007d9c;
+  background-color: var(--color-primary-500);
   color: white;
 `;
