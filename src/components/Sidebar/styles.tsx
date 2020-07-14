@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components";
+import styled, {css} from "styled-components";
 
 interface NavProps {
-  visible: boolean;
+    visible: boolean;
 }
 
 export const Nav = styled.nav`
@@ -19,8 +19,8 @@ export const Nav = styled.nav`
   transition: transform 0.25s ease-out;
 
   ${(props: NavProps) =>
-    props.visible &&
-    css`
+        props.visible &&
+        css`
       transform: translateX(0);
     `}
 `;
@@ -28,7 +28,7 @@ export const Nav = styled.nav`
 export const A = styled.a`
   text-decoration: none;
   font-size: 1.2rem;
-  color: #465421;
+  color: var(--color-gray-800);
 `;
 
 export const Ul = styled.ul`
@@ -41,9 +41,11 @@ export const Ul = styled.ul`
 
 export const Li = styled.li`
   margin: 10px 20px;
-  color: #465421;
+  color: var(--color-gray-800);
+    font-size: 1rem;
 `;
 
 export const I = styled.i`
   margin-right: 10px;
+  color: var(--color-primary-500);
 `;

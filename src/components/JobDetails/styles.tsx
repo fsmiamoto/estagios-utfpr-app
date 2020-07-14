@@ -32,9 +32,9 @@ export const Company = styled.h1`
 
   & > a {
     text-decoration: none;
-    color: #46505a;
+    color: var(--color-gray-800);
     &:hover {
-      color: #677685;
+      color: var(--color-gray-500);
       transition: ease-in-out color 0.1s;
     }
   }
@@ -50,23 +50,16 @@ export const JobType = styled.h2<{type: string}>`
 `;
 
 export const Description = styled.p`
-  color: #777;
+  color: var(--color-gray-600);
   text-align: justify;
   font-size: 16px;
 `;
 
 export const Header = styled.h2`
   font-size: 1.2rem;
-  color: #46505a;
+  color: var(--color-gray-800);
   margin-bottom: 5px;
   margin-top: 10px;
-`;
-
-export const ContactRow = styled.div`
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: flex-start;
-  margin-bottom: 5px;
 `;
 
 export const ContactCol = styled.div`

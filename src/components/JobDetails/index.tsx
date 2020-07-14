@@ -7,7 +7,6 @@ import {
     Base,
     Company,
     Description,
-    ContactRow,
     ContactCol,
     JobType,
     FlexDiv,
@@ -87,27 +86,23 @@ function JobDetails(props: JobDetailsProps) {
                     <Description>{job.benefits}</Description>
                 </TabPanel>
                 <TabPanel>
-                    <ContactRow>
+                    <FlexDiv>
                         {job.contact && (
                             <span>
                                 <I className="far fa-address-card" /> {job.contact}
                             </span>
                         )}
-                    </ContactRow>
-                    <ContactRow>
                         {job.phone && (
                             <span>
                                 <I className="fas fa-phone-alt" /> {job.phone}
                             </span>
                         )}
-                    </ContactRow>
-                    <ContactRow>
                         {job.email && (
                             <span>
                                 <I className="far fa-envelope" /> {job.email}
                             </span>
                         )}
-                    </ContactRow>
+                    </FlexDiv>
                 </TabPanel>
                 <TabPanel>
                     <ul>
