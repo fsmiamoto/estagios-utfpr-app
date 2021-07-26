@@ -2,8 +2,6 @@
 
 An app for visualizing job positions taken from the UTFPR website
 
-Avaliable at: https://estagios.fsmiamoto.xyz/
-
 ## Motivation
 
 The main purpose of this project was for me to practice some frontend development while trying out new
